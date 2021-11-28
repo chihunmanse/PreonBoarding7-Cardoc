@@ -1,14 +1,13 @@
 import json
-import re
 import bcrypt
 import jwt
 
-from django.http            import JsonResponse
-from django.views           import View
-from json.decoder           import JSONDecodeError
-from django.conf            import settings
+from django.http  import JsonResponse
+from django.views import View
+from json.decoder import JSONDecodeError
+from django.conf  import settings
 
-from users.models           import User
+from users.models import User
 
 class SignUpView(View):
     def post(self, request):
@@ -18,7 +17,7 @@ class SignUpView(View):
             password = data['password']
 
             if User.objects.filter(id = id).exists():
-                return JsonResponse({'message' : 'ID_ALREADY_EXISTS'}, status = 409)
+                return JsonResponse({'message' : 'ID_ALREADY_EXIST'}, status = 409)
             
             if not id:
                 return JsonResponse({'message' : 'INVALID_ID'}, status = 400)
@@ -45,7 +44,7 @@ class SignInView(View):
             data = json.loads(request.body)
 
             if not User.objects.filter(id = data['id']).exists():
-                return JsonResponse({'message': 'USER_DOSE_NOT_EXIST'}, status = 404)
+                return JsonResponse({'message': 'USER_DOES_NOT_EXIST'}, status = 404)
 
             user = User.objects.get(id = data['id'])
 
@@ -54,10 +53,10 @@ class SignInView(View):
             
             token = jwt.encode({'user_id' : user.id}, settings.SECRET_KEY, algorithm = settings.ALGORITHM)
 
-            return JsonResponse({'token':token}, status = 200)
+            return JsonResponse({'token' : token}, status = 200)
 
         except KeyError:
-            return JsonResponse({'message':'KEY_ERROR'}, status = 400)
+            return JsonResponse({'message' : 'KEY_ERROR'}, status = 400)
 
         except JSONDecodeError:
             return JsonResponse({'message' : 'JSON_DECODE_ERROR'}, status = 400)
