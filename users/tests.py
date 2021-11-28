@@ -22,7 +22,7 @@ class UserTest(TestCase):
         data     = {'id' : 'user3', 'password' : 'abc1234'}
         response = client.post('/users/signup', json.dumps(data), content_type = 'application/json')
 
-        self.assertEqual(response.status_code, 201)
+        self.assertEqual(response.status_code, 200)
         self.assertEqual(response.json(),
             { "message" : "SUCCESS" }
         )
@@ -33,7 +33,7 @@ class UserTest(TestCase):
         data     = {'id' : 'user1', 'password' : 'abc1234'}
         response = client.post('/users/signup', json.dumps(data), content_type = 'application/json')
 
-        self.assertEqual(response.status_code, 409)
+        self.assertEqual(response.status_code, 400)
         self.assertEqual(response.json(),
             { "message" : 'ID_ALREADY_EXIST' }
         )
