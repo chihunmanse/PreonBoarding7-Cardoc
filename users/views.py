@@ -17,7 +17,7 @@ class SignUpView(View):
             password = data['password']
 
             if User.objects.filter(id = id).exists():
-                return JsonResponse({'message' : 'ID_ALREADY_EXIST'}, status = 409)
+                return JsonResponse({'message' : 'ID_ALREADY_EXIST'}, status = 400)
             
             if not id:
                 return JsonResponse({'message' : 'INVALID_ID'}, status = 400)
@@ -30,7 +30,7 @@ class SignUpView(View):
                 password = decoded_password,
             )
 
-            return JsonResponse({'message':'SUCCESS'}, status = 201)
+            return JsonResponse({'message':'SUCCESS'}, status = 200)
         
         except KeyError:
             return JsonResponse({'message' : 'KEY_ERROR'}, status = 400)

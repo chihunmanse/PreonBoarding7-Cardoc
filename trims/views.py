@@ -43,7 +43,7 @@ class TrimView(View):
 
                     UserTrim.objects.get_or_create(user = user, trim = trim)
             
-            return JsonResponse({'message' : 'SUCCESS'}, status = 201)
+            return JsonResponse({'message' : 'SUCCESS'}, status = 200)
 
         except KeyError:
             return JsonResponse({'message' : 'KEY_ERROR'}, status = 400)
