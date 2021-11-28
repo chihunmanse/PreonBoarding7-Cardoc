@@ -87,7 +87,7 @@ class UserTest(TestCase):
         data     = {'id' : 'user3', 'password' : 'abc1234'}
         response = client.post('/users/signin', json.dumps(data), content_type = 'application/json')
 
-        self.assertEqual(response.status_code, 404)
+        self.assertEqual(response.status_code, 400)
         self.assertEqual(response.json(),
             { "message" : 'USER_DOES_NOT_EXIST' }
         )

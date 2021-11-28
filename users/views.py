@@ -44,7 +44,7 @@ class SignInView(View):
             data = json.loads(request.body)
 
             if not User.objects.filter(id = data['id']).exists():
-                return JsonResponse({'message': 'USER_DOES_NOT_EXIST'}, status = 404)
+                return JsonResponse({'message': 'USER_DOES_NOT_EXIST'}, status = 400)
 
             user = User.objects.get(id = data['id'])
 
