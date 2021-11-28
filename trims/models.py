@@ -10,7 +10,7 @@ class Trim(models.Model):
 
 class Tire(models.Model):
     width        = models.PositiveIntegerField()
-    aspec_tratio = models.PositiveIntegerField()
+    aspect_ratio = models.PositiveIntegerField()
     wheel_size   = models.PositiveIntegerField()
 
     class Meta:
