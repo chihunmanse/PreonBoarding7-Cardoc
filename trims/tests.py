@@ -289,3 +289,31 @@ class TrimViewTest(TestCase):
                 'data' : data
             }
         )
+
+    def test_get_fail_unauthorized(self):
+        clinet = Client()
+            
+        data = [
+            {
+                "trim_name": "GH270 고급형",
+                "front_tire": {
+                    "width": 225,
+                    "aspect_ratio": 60,
+                    "wheel_size": 16
+                },
+                "rear_tire": {
+                    "width": 225,
+                    "aspect_ratio": 60,
+                    "wheel_size": 16
+                }
+            }
+        ]
+
+        response = clinet.get('/trims')
+
+        self.assertEqual(response.status_code, 401)
+        self.assertEqual(response.json(),
+            {
+                'message' : 'UNAUTHORIZED'
+            }
+        )
