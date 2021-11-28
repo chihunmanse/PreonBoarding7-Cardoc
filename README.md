@@ -241,6 +241,8 @@ https://chipped-barberry-03f.notion.site/cardoc-0d780930bf90483680932ca2b4bd5b41
 
 위의 notion 링크에 있는 내용을 해당 파일에 입력합니다.
 
+pip freeze > requirements.txt 명령어를 입력하여 필요한 패키지를 설치합니다.
+
 python manage.py runserver 명령어를 입력하여 서버를 실행합니다. 
 
 DB는 sqlite3를 사용하였습니다.
