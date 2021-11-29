@@ -241,6 +241,12 @@ https://chipped-barberry-03f.notion.site/cardoc-0d780930bf90483680932ca2b4bd5b41
 
 위의 notion 링크에 있는 내용을 해당 파일에 입력합니다.
 
+https://docs.conda.io/en/latest/miniconda.html
+
+미니콘다 설치 후 conda create -n cardoc python=3.8 명렁어를 입력하여 가상환경을 생성합니다.
+
+conda activate cardoc 명령어를 입력하여 가상환경을 실행합니다.
+
 pip freeze > requirements.txt 명령어를 입력하여 필요한 패키지를 설치합니다.
 
 python manage.py runserver 명령어를 입력하여 서버를 실행합니다. 
